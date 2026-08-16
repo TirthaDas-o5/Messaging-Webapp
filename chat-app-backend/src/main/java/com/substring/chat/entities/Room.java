@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document(collation = "rooms")
 @Getter
 @Setter
@@ -17,5 +20,7 @@ public class Room {
     private  String id;// Mongo db : unique identifier
     private String roomId;
 
-    private List<Messages> messages = new
+    private List<Message> messages = new ArrayList<>();
+
+
 }
