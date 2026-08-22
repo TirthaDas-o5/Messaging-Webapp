@@ -27,7 +27,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         // when client subscribe
         // here a connection would be established
         registry.addEndpoint("/chat") // connection establishment
-            .setAllowedOrigins("http://localhost:3000")
+            .setAllowedOrigins("http://localhost:5173")
             .withSockJS();// provides alternate connection
     }
     // chat endpoint per connection will be established

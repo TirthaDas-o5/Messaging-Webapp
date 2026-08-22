@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.time.LocalDateTime;
 
 @Controller
-@CrossOrigin("http://localhost:3000") // if changed here also should be changed in
+@CrossOrigin("http://localhost:5173") // if changed here also should be changed in
 // RoomController.java and WebSocketConfig.java
 public class ChatController {
 
@@ -25,12 +25,12 @@ public class ChatController {
     }
 
     // for sending and receiving messages
-    @MessageMapping("/sendMessage/roomId") // /app/sendMessage/roomId
-    @SendTo("/topic/room/{roomId") // here will subscribe
+    @MessageMapping("/sendMessage/{roomId}") // /app/sendMessage/roomId
+    @SendTo("/topic/room/{roomId}") // here will subscribe
     public Message sendMessage(
         @DestinationVariable String roomId,
         @RequestBody MessageRequest request
-    )throws Exception{
+    ) throws Exception {
         Room room = roomRepository.findByRoomId(request.getRoomId());
 
         Message message = new Message();
@@ -38,11 +38,10 @@ public class ChatController {
         message.setSender(request.getSender());
         message.setTimeStamp(LocalDateTime.now());
 
-        if(room!=null){
+        if (room != null) {
             room.getMessages().add(message);
             roomRepository.save(room);
-        }
-        else{
+        } else {
             throw new RuntimeException("room not found !!");
         }
         return message;
