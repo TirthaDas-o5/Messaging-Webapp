@@ -209,9 +209,9 @@ const ChatPage = () => {
             className="w-full dark:border-gray-600 b dark:bg-gray-800 px-5 py-2 rounded-full h-full focus:outline-none"
           />
           <div className="flex gap-1">
-            <button className="dark:bg-purple-600 h-10 w-10 flex justify-center items-center rounded-full">
+            {/* <button className="dark:bg-purple-600 h-10 w-10 flex justify-center items-center rounded-full">
               <MdAttachFile size={20} />
-            </button>
+            </button> */}
             <button
               onClick={sendMessage}
               className="dark:bg-green-600 h-10 w-10 flex justify-center items-center rounded-full"
